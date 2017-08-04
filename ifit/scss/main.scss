@@ -1,0 +1,307 @@
+
+/*
+This is a Design/Development test required from iFit company. This is a property of Jeewan Aryal.
+You are not allowed to use it in any places without my permission.
+Ask me at jeewanaryal@gmail.com before using any of the contents from here.
+Thanks.
+*/
+@import "../fonts/fonts.css";
+
+$scroll-factor: .5;
+$background: #333;
+$header-height: 50px;
+$image: "../assets/background-copy.png";
+
+/* Helpers */
+@mixin toggle-input {
+  display: none;
+}
+@mixin button-blue {
+  height: 62px;
+  width: 222px;
+  background-color: #0097d9;
+  color: #fdfdfd;
+  font-family: "proxima Nova";
+  font-size: 0.8182rem;
+  text-transform: uppercase;
+}
+@mixin anim($animTime){
+  animation: fadein $animTime;
+  -moz-animation: fadein $animTime;
+  -webkit-animation: fadein $animTime;
+  -o-animation: fadein $animTime;
+}
+.show-search-input {
+  display: inline-block !important;
+  @include anim(2.8s);
+  input[type=text] {
+    margin-top: -10px;
+    border: 1px solid #666666;
+    height: 20px;
+    padding: 14px;
+  }
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+/* Helpers */
+
+//@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100,300,400,500,700,800,900,500italic,400italic,100italic,900italic,300italic,700italic,800italic);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+body {
+  background: $background;
+}
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+#root-wrapper {
+  #menu-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    height: 60px;
+    position: fixed;
+    z-index: 1;
+    .menu-upper {
+      height: 70px;
+      background: rgba(20, 20, 20, 0.9);
+      ul {
+        li {
+          margin: 30px 5px;
+        }
+      }
+    }
+    .menu-lower {
+      height: 50px;
+      background: rgba(253, 253, 253, 0.8);
+      h4 {
+        font-family: "Proxima Nova";
+        color: #424242;
+        display: inline-block;
+        margin: 15px 30px;
+        font-size: 0.8182rem;
+      }
+      ul {
+        li {
+          color: #929292;
+          margin: 20px 5px;
+        }
+        li:nth-child(3) {
+          color: #424242;
+          text-decoration: underline;
+        }
+        li.input-search {
+          @include toggle-input();
+        }
+        li i.fa-search {
+          cursor: pointer;
+        }
+      }
+    }
+    .menu-upper, .menu-lower {
+      img {
+        margin: 23px 30px;
+        vertical-align: middle;
+      }
+      ul {
+        color: #ffffff;
+        float: right;
+        li {
+          display: inline-block;
+          list-style: none;
+          text-transform: uppercase;
+          font-family: "Proxima Nova";
+          font-size: 0.5909rem;
+        }
+        li:last-child {
+          margin-right: 45px;
+        }
+      }
+    }
+  }
+  main {
+    width: 100%;
+    margin: 0 auto;
+    height: 150vh;
+    max-height: 100%;
+    overflow-x: hidden;
+    perspective: 1px;
+    perspective-origin: center top;
+    transform-style: preserve-3d;
+  }
+
+  header {
+    height: 100vh;
+    background: url($image);
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    vertical-align: top;
+    transform-origin: center top;
+    transform: translateZ(-#{$scroll-factor * 2}px) scale(1 + $scroll-factor * 2);
+    .hero-content {
+      padding-top: 52vh;
+      padding-left: 200px;
+      h2 {
+        font-family: "proxima_nova_ltthin";
+        font-size: 2.364rem;
+        color: #fdfdfd;
+        text-transform: uppercase;
+        width: 605px;
+        background: rgba(20, 20, 20, 0.09);
+      }
+      h6 {
+        font-family: "Proxima Nova";
+        font-size: 0.8182rem;
+        color: #fdfdfd;
+        width: 380px;
+        background: rgba(20, 20, 20, 0.09);
+      }
+    }
+  }
+
+  section {
+    min-height: 200vh;
+    background: white;
+    transform: translateZ(0);
+    padding: 10px 0;
+    h2 {
+      font-size: 1.545rem;
+    }
+    p {
+      font-size: 0.8182rem;
+    }
+    h2, p {
+      font-family: "Proxima Nova";
+      text-align: center;
+      width: 46%;
+      margin: 16px auto;
+    }
+    .card-wrapper {
+      max-width: 1180px;
+      margin: 0 auto;
+      display:-webkit-flex;
+      display:flex;
+      flex-wrap: nowrap;
+      .card {
+        width: 25%;
+        margin: 20px;
+        label {
+          display: block;
+          font-family: "Proxima Nova";
+        }
+        label:nth-of-type(1) {
+          color: #424242;
+          font-size: 0.7273rem;
+        }
+        label:nth-of-type(2) {
+          color: #929292;
+          font-size: 0.5909rem;
+          font-family: "Georgia";
+        }
+      }
+      .card:hover {
+        //@include anim(1s);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
+    .desktop-12 {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .view-more-wrapper {
+      margin-top: 40px;
+      .view-more-content {
+        text-align: center;
+        button {
+          @include button-blue();
+        }
+      }
+    }
+    .row {
+
+    }
+    .quotes {
+      margin-top: 60px;
+      background-color: #1e1e1e;
+      height: 274px;
+      color: white;
+      .qt {
+        font-family: "Times New Roman";
+        font-size: 12.5rem;
+        margin-left: 20%;
+        color: #0096d6;
+      }
+      p {
+        margin-left: 30%;
+        margin-top: -176PX;
+        color: #fdfdfd;
+      }
+      .author {
+        margin-left: 60%;
+        color: #0096d6;
+      }
+      .carousel-dots {
+        margin-top: 100px;
+        text-align: center;
+      }
+    }
+    .join-today {
+      height: 110px;
+      padding: 24px;
+      text-align: center;
+      label {
+        font-family: "Proxima Nova";
+        font-size: 1.545rem;
+        color: #424242;
+        margin-right: 16px;
+      }
+      button {
+        @include button-blue();
+      }
+    }
+    .footer {
+      background-color: #1e1e1e;
+      height: 40px;
+      margin-bottom: -10px;
+      ul {
+        margin: 12px 20px;
+        vertical-align: middle;
+      }
+      ul, ul li {
+        font-family: "Proxima Nova";
+        color: #747475;
+        display: inline-block;
+        font-size: 0.4545rem;
+      }
+      ul.social-links li {
+        margin: 0 10px;
+      }
+      ul.misc-links {
+        float: right;
+        li i.fa-sort-desc {
+          font-size: 1rem;
+        }
+      }
+    }
+  } // <section>
+
+
+}
